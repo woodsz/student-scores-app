@@ -6,10 +6,12 @@ namespace StudentApp
 {
     public partial class AddStudentForm: Form
     {
+        // Variable
         MainForm mainForm;
         List<int> scores;
         Student curStudent;
 
+        // Constructor
         public AddStudentForm(MainForm refMainForm, Student refStudent)
         {
             InitializeComponent();
@@ -78,8 +80,6 @@ namespace StudentApp
         // Handle Cancel Button Click
         private void Btn_Cancel_Click(object sender, EventArgs e)
         {
-            curStudent = null;
-            scores = null;
             Dispose();
         }
 

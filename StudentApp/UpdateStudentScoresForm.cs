@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudentApp
 {
     public partial class UpdateStudentScoresForm : Form
     {
-        MainForm mainForm;
-        Student student;
-        BindingList<int> scoresCopy;
-        int selectedScore;
+        // Variables
+        public MainForm mainForm;
+        public Student student;
+        public BindingList<int> scoresCopy;
+        public int selectedScore;
+        public int selectedIndex;
+        public int lastSelectedIndex;
 
 
+        // Constructor
         public UpdateStudentScoresForm(MainForm refMainForm, Student refStudent)
         {
             InitializeComponent();
@@ -25,19 +23,37 @@ namespace StudentApp
             mainForm = refMainForm;
             student = refStudent;
             selectedScore = 0;
+            selectedIndex = 0;
+            lastSelectedIndex = 0;
 
             Txt_Name.Text = student.Name;
             scoresCopy = student.Scores;
             List_Scores.DataSource = scoresCopy;
-
-            scoresCopy.Add(100);
-
         }
 
         // Handle index change event on Listbox
         private void List_Scores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedScore = (int)List_Scores.SelectedItem;
+            var selectedIndex = List_Scores.SelectedIndex;
+
+            if(selectedIndex != -1)
+            {
+                lastSelectedIndex = selectedIndex;
+                selectedScore = (int)List_Scores.SelectedItem;
+                DisableButtons(true);
+            }
+            else
+            {
+                DisableButtons(false);
+            }
+
+        }
+
+        // Disable and Enable Buttons
+        public void DisableButtons(bool active)
+        {
+            Btn_Update.Enabled = active;
+            Btn_Remove.Enabled = active;
         }
 
         // Handle Cancel Button Click
@@ -52,6 +68,33 @@ namespace StudentApp
             student.Scores = scoresCopy;
             mainForm.UpdateDataSource();
             Dispose();
+        }
+
+        // Handle Remove score Button Click
+        private void Btn_Remove_Click(object sender, EventArgs e)
+        {
+            scoresCopy.Remove(selectedScore);
+            List_Scores.ClearSelected();
+        }
+
+        // Handle Clear scores Button Click
+        private void Btn_ClearScores_Click(object sender, EventArgs e)
+        {
+            scoresCopy.Clear();
+        }
+
+        // Handle Add and Update score Button Clicks
+        private void Btn_Add_Click(object sender, EventArgs e)
+        {
+            Button temp = sender as Button;
+            bool IsAddBtn = false;
+
+            if(temp == Btn_Add)
+            {
+                IsAddBtn = true;
+            }
+
+            new AddUpdateScoreForm(this, IsAddBtn, lastSelectedIndex).Show();
         }
     }
 }

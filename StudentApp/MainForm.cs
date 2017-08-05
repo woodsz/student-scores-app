@@ -7,9 +7,11 @@ namespace StudentApp
 {
     public partial class MainForm : Form
     {
+        // Variables
         BindingList<Student> students;
         Student selectedStudent;
 
+        // Constructor
         public MainForm()
         {
             InitializeComponent();
@@ -17,9 +19,9 @@ namespace StudentApp
             selectedStudent = null;
 
             // Dummy students No Pun intended - haha
-            students.Add(new Student("Daniel Woods", new List<int> { 23, 23, 23, 23, 23 }));
-            students.Add(new Student("Michelle Woods", new List<int> { 23, 23, 23, 23, 23 }));
-            students.Add(new Student("Adam Woods", new List<int> { 23, 23, 23, 23, 23 }));
+            students.Add(new Student("Daniel Woods", new List<int> { 74, 50, 100, 65, 40 }));
+            students.Add(new Student("Michelle Woods", new List<int> { 100, 95, 85, 5, 85 }));
+            students.Add(new Student("Adam Woods", new List<int> { 23, 100, 12, 45, 12 }));
             UpdateDataSource();
 
         }
@@ -28,7 +30,9 @@ namespace StudentApp
         public void UpdateDataSource()
         {
             List_Students.DataSource = null;
+
             List_Students.DataSource = students;
+
             List_Students.DisplayMember = "DisplayName";
         }
 

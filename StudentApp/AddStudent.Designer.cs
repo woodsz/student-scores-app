@@ -62,7 +62,7 @@
             this.Btn_AddScore.Location = new System.Drawing.Point(176, 33);
             this.Btn_AddScore.Name = "Btn_AddScore";
             this.Btn_AddScore.Size = new System.Drawing.Size(75, 23);
-            this.Btn_AddScore.TabIndex = 3;
+            this.Btn_AddScore.TabIndex = 2;
             this.Btn_AddScore.Text = "Add Score";
             this.Btn_AddScore.UseVisualStyleBackColor = true;
             this.Btn_AddScore.Click += new System.EventHandler(this.Btn_AddScore_Click);
@@ -82,7 +82,7 @@
             this.Txt_Score.Location = new System.Drawing.Point(78, 35);
             this.Txt_Score.Name = "Txt_Score";
             this.Txt_Score.Size = new System.Drawing.Size(64, 20);
-            this.Txt_Score.TabIndex = 4;
+            this.Txt_Score.TabIndex = 1;
             // 
             // Txt_Scores
             // 
@@ -91,6 +91,7 @@
             this.Txt_Scores.ReadOnly = true;
             this.Txt_Scores.Size = new System.Drawing.Size(173, 20);
             this.Txt_Scores.TabIndex = 6;
+            this.Txt_Scores.TabStop = false;
             // 
             // label3
             // 
@@ -107,7 +108,7 @@
             this.Btn_ClearScores.Location = new System.Drawing.Point(176, 87);
             this.Btn_ClearScores.Name = "Btn_ClearScores";
             this.Btn_ClearScores.Size = new System.Drawing.Size(75, 23);
-            this.Btn_ClearScores.TabIndex = 8;
+            this.Btn_ClearScores.TabIndex = 3;
             this.Btn_ClearScores.Text = "Clear Scores";
             this.Btn_ClearScores.UseVisualStyleBackColor = true;
             this.Btn_ClearScores.Click += new System.EventHandler(this.Btn_ClearScores_Click);
@@ -117,7 +118,7 @@
             this.Btn_OK.Location = new System.Drawing.Point(95, 142);
             this.Btn_OK.Name = "Btn_OK";
             this.Btn_OK.Size = new System.Drawing.Size(75, 23);
-            this.Btn_OK.TabIndex = 9;
+            this.Btn_OK.TabIndex = 4;
             this.Btn_OK.Text = "OK";
             this.Btn_OK.UseVisualStyleBackColor = true;
             this.Btn_OK.Click += new System.EventHandler(this.Btn_OK_Click);
@@ -127,7 +128,7 @@
             this.Btn_Cancel.Location = new System.Drawing.Point(176, 142);
             this.Btn_Cancel.Name = "Btn_Cancel";
             this.Btn_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.Btn_Cancel.TabIndex = 10;
+            this.Btn_Cancel.TabIndex = 5;
             this.Btn_Cancel.Text = "Cancel";
             this.Btn_Cancel.UseVisualStyleBackColor = true;
             this.Btn_Cancel.Click += new System.EventHandler(this.Btn_Cancel_Click);

@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace StudentApp
 {
-
     public class Student
     {
         // Properties
@@ -16,7 +15,7 @@ namespace StudentApp
         {
             get
             {
-                return Name + " " + DisplayScores();
+                return Name + "\t" + DisplayScores();
             }
         }
 
@@ -55,7 +54,12 @@ namespace StudentApp
         // Print total scores
         public string GetTotalScore()
         {
-            return Scores.Sum().ToString();
+            if (Scores.Count() > 1)
+            {
+                return Scores.Sum().ToString(); 
+            }
+
+            return "";
         }
 
         // Print count of scores
@@ -67,7 +71,13 @@ namespace StudentApp
         // Print average score
         public string GetAverageScore()
         {
-            return Scores.Average().ToString();
+            if(Scores.Count() > 1)
+            {
+                return Scores.Average().ToString();
+
+            }
+
+            return "";
         }
     }
 }
