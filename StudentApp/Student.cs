@@ -73,7 +73,7 @@ namespace StudentApp
         {
             if(Scores.Count() > 1)
             {
-                return Scores.Average().ToString();
+                return Scores.Average().ToString("###.##");
 
             }
 
