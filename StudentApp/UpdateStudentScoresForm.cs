@@ -73,8 +73,7 @@ namespace StudentApp
         // Handle OK Button Click
         private void Btn_OK_Click(object sender, EventArgs e)
         {
-            student.Scores = scoresCopy;
-            mainForm.UpdateDataSource();
+            mainForm.UpdateStudentScoresList(student, scoresCopy);
             Dispose();
         }
 
