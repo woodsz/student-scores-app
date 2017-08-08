@@ -27,7 +27,15 @@ namespace StudentApp
             lastSelectedIndex = 0;
 
             Txt_Name.Text = student.Name;
-            scoresCopy = student.Scores;
+            scoresCopy = new BindingList<int>();
+
+            // BUGFIX: created a new list and passed in the values one by one
+            foreach(int score in refStudent.Scores)
+            {
+                scoresCopy.Add(score);
+            }
+
+
             List_Scores.DataSource = scoresCopy;
         }
 
@@ -65,8 +73,7 @@ namespace StudentApp
         // Handle OK Button Click
         private void Btn_OK_Click(object sender, EventArgs e)
         {
-            student.Scores = scoresCopy;
-            mainForm.UpdateDataSource();
+            mainForm.UpdateStudentScoresList(student, scoresCopy);
             Dispose();
         }
 

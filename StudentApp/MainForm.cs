@@ -15,24 +15,21 @@ namespace StudentApp
         public MainForm()
         {
             InitializeComponent();
-            students = new BindingList<Student>();
+            
+            UpdateDataSource();
             selectedStudent = null;
 
-            // Dummy students No Pun intended - haha
-            students.Add(new Student("Daniel Woods", new List<int> { 74, 50, 100, 65, 40 }));
-            students.Add(new Student("Michelle Woods", new List<int> { 100, 95, 85, 5, 85 }));
-            students.Add(new Student("Adam Woods", new List<int> { 23, 100, 12, 45, 12 }));
-            UpdateDataSource();
-
+            List_Students.ClearSelected();
         }
 
         // Assigns and Updates DateBindings
         public void UpdateDataSource()
         {
+            // Reads students list from file
+            students = StudentsDB.GetStudents();
+
             List_Students.DataSource = null;
-
             List_Students.DataSource = students;
-
             List_Students.DisplayMember = "DisplayName";
         }
 
@@ -91,14 +88,38 @@ namespace StudentApp
         private void Btn_DelStudent_Click(object sender, EventArgs e)
         {
             students.Remove(selectedStudent);
+
+            StudentsDB.SaveStudents(students);
+
             List_Students.ClearSelected();
+
+            
         }
 
         // Adds new student to the list
         public void InsertUpdateStudentList(Student newStudent)
         {
             students.Add(newStudent);
+
+            StudentsDB.SaveStudents(students);
+
+            UpdateDataSource();
             List_Students.SetSelected(0, true);
+
+            
         }
+
+        // Updates student scores
+        public void UpdateStudentScoresList(Student studentToUpdate, BindingList<int> newScores)
+        {
+            studentToUpdate.Scores = newScores;
+
+            StudentsDB.SaveStudents(students);
+
+            UpdateDataSource();
+            List_Students.ClearSelected();
+
+        }
+
     }
 }

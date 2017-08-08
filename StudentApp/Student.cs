@@ -19,6 +19,9 @@ namespace StudentApp
             }
         }
 
+        // Constructor with no args
+        public Student(){}
+
         // Constructor
         public Student(string name, List<int> scores = null)
         {
